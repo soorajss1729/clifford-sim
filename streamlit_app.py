@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 #gates=[]
 #-----------------------------
 def anticom_rows_gen(k):
+###Generate two random binary rows that anticommute.###
 	found=False
 	while not found:
 		r1 = np.random.randint(0, 2, size=(2 * k + 1))
@@ -41,6 +42,7 @@ def extract_sweep_tabs(tableau, k,pair_index):
 
 #-----------------------------
 def clear_z_block(row, k, sweep_tab_x, sweep_tab_z, gates):
+###Clear the Z-block of one row using H or S gates###
     for j in range(k):
         x_a = sweep_tab_x[row, j]  # Use from sweep_tab_x
         z_a = sweep_tab_z[row, j]  # Use from sweep_tab_z
@@ -59,6 +61,7 @@ def clear_z_block(row, k, sweep_tab_x, sweep_tab_z, gates):
 #    return sweep_tab_x,sweep_tab_z
 #-----------------------------
 def sweep_x_to_pivot(row, k, sweep_tab_x, sweep_tab_z, gates):
+###Collapse all X’s in the row down to a single pivot via CX gates###
      J = [j for j in range(k) if sweep_tab_x[row, j] == 1]
      print('J:',J)
      while len(J)>1:
